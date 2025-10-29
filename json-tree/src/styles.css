@@ -1,0 +1,135 @@
+/* src/styles.css */
+
+/* Default (light) variables on :root */
+:root {
+  --bg-page: #f8f9fa;
+  --bg-card: #ffffff;
+  --text-primary: #212529;
+  --muted: #6c757d;
+  --accent: #0d6efd;
+  --accent-variant: #0b5ed7;
+  --node-object-bg: #eef2ff;   /* light object */
+  --node-array-bg: #e8f5e9;    /* light array */
+  --node-primitive-bg: #fff3cd;/* light primitive */
+  --node-border: rgba(0,0,0,0.08);
+  --panel-bg: rgba(255,255,255,0.9);
+  --message-success: #d1fae5;
+  --message-warn: #fff4e5;
+  --message-error: #ffe5e5;
+  --shadow: 0 6px 18px rgba(16,24,40,0.06);
+  --reactflow-bg: #ffffff;
+  --controls-bg: rgba(255,255,255,0.85);
+}
+
+/* Dark theme overrides */
+.dark {
+  --bg-page: #0b1220;
+  --bg-card: #0f1724;
+  --text-primary: #e6eef8;
+  --muted: #9aa7bb;
+  --accent: #7c9cff;
+  --accent-variant: #6b8fff;
+  --node-object-bg: #1f2937;    /* dark object */
+  --node-array-bg: #0f5132;     /* dark array */
+  --node-primitive-bg: #5c4300; /* dark primitive (subtle) */
+  --node-border: rgba(255,255,255,0.06);
+  --panel-bg: rgba(10,10,12,0.6);
+  --message-success: #054e3a;
+  --message-warn: #5a3d00;
+  --message-error: #5a0f0f;
+  --shadow: none;
+  --reactflow-bg: #071026;
+  --controls-bg: rgba(8,10,12,0.6);
+}
+
+/* Light class (explicit) — optional, page defaults to light */
+.light {
+  /* re-declare only if you want an explicit .light class */
+}
+
+/* Apply global layout colors */
+html, body, #root {
+  height: 100%;
+  background: var(--bg-page);
+  color: var(--text-primary);
+}
+
+.container, .card, .flow-card {
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+  color: var(--text-primary);
+}
+
+/* React Flow canvas background */
+.reactflow-wrapper {
+  background: linear-gradient(180deg, var(--reactflow-bg), var(--reactflow-bg));
+}
+
+/* Controls panel style */
+.reactflow__controls {
+  background: var(--controls-bg) !important;
+  border-radius: 8px;
+}
+
+/* Panel and messages */
+.reactflow-panel, .panel {
+  background: var(--panel-bg);
+  color: var(--text-primary);
+  border-radius: 8px;
+}
+
+/* Message styles */
+.message {
+  color: var(--text-primary);
+}
+.message.success { background: var(--message-success); }
+.message.warn    { background: var(--message-warn); }
+.message.error   { background: var(--message-error); }
+
+/* Node base styles — override your node components to use these or keep them here */
+.rf-node {
+  border: 1px solid var(--node-border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  min-width: 120px;
+  box-shadow: none;
+  color: var(--text-primary);
+}
+
+/* Node type specific */
+.rf-node.object { background: var(--node-object-bg); }
+.rf-node.array  { background: var(--node-array-bg);  }
+.rf-node.primitive { background: var(--node-primitive-bg); }
+
+/* Highlighted node */
+.rf-node.highlight {
+  outline: 3px solid var(--accent);
+  box-shadow: 0 8px 24px rgba(12, 74, 255, 0.12);
+}
+
+/* Button overrides to look good in dark mode */
+.btn-outline-secondary {
+  border-color: rgba(0,0,0,0.08);
+  color: var(--text-primary);
+}
+.dark .btn-outline-secondary {
+  border-color: rgba(255,255,255,0.06);
+}
+
+/* Make sure input controls are readable in dark */
+.form-control {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.dark .form-control {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* small helpers */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
